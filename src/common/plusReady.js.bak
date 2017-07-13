@@ -1,0 +1,18 @@
+//
+//import Back from './Back.js'
+//import Broadcast from './Broadcast.js'
+
+const plusready = function(fn){
+    if (window.plus) {
+      setTimeout(fn, 0)
+    } else {
+      document.addEventListener("plusready", fn, false)
+    }
+    return this
+}
+plusReady(()=>{
+   
+})
+
+
+module.exports =  plusready
