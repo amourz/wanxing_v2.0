@@ -52,14 +52,7 @@
 		XHeader
 	} from 'vux'
 	
-//	import Tabbar from 'vux/src/components/tabbar/tabbar'
-//	import TabbarItem from 'vux/src/components/tabbar/tabbar-item.vue'
-//	import Swiper from 'vux/src/components/swiper/swiper'
-//	import ViewBox from 'vux/src/components/view-box/index.vue'
-//	import Card from 'vux/src/components/card/index.vue'
-//	import XHeader from 'vux/src/components/x-header/index.vue'
 
-	//import DomReady from '../../common/DomReady.js'
 	import plusReady from '../../common/plusReady.js'
 
 	const baseList = [{
@@ -107,7 +100,6 @@
 			}
 		},
 		mounted() {
-			console.log(this.noData)
 			this.fetch();
 			plusReady(this.closeSplash)
 			this.$refs.scroller.finishInfinite(true);
@@ -119,9 +111,6 @@
 			},
 			fetch() {
 				var that = this;
-				//console.log(that.pageIndex)
-				//this.msg = plus.device.uuid
-				
 				let url = 'http://www.wondfun.cn/api/wanxingv2/event.php'
 				var params = {
 					act: 'list_index',
@@ -131,7 +120,7 @@
 
 				this.$http.post(url, params)
 					.then(function(res) {
-						console.log(JSON.stringify(res.data))
+						//console.log(JSON.stringify(res.data))
 						var data = res.data
 						if(data && data.length === 0) {
 							that.noData= true
@@ -144,7 +133,7 @@
 							that.pageIndex++
                             that.noData = false
 						}
-                       console.log(that.noData)
+                       
 					})
 					.catch(function(err) {
 						console.log(err);
@@ -168,7 +157,6 @@
 			},
 
 			refresh(done) {
-				console.log('refresh');
 				this.pageIndex = 0
 				this.list = []
 				setTimeout(() => {
